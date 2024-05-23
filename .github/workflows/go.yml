@@ -43,8 +43,13 @@ jobs:
             --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
             --label tag=${{ steps.build_tag_generator.outputs.BUILD_TAG }} \
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             --build-arg BASE_IMAGE=alpine:3.19 \
             --build-arg BUILD_IMAGE=golang:1.21-alpine3.19 \
 >>>>>>> 66e0aba (Add build image arg)
+=======
+            --build-arg BASE_IMAGE=alpine:3.19 \
+            --build-arg BUILD_IMAGE=golang:1.21-alpine3.19 \
+>>>>>>> 3a3c7af (Merge pull request #125 from hyperledger/base_image)
             --tag ghcr.io/hyperledger/firefly-fabconnect:${{ steps.build_tag_generator.outputs.BUILD_TAG }} .

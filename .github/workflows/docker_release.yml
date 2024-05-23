@@ -17,10 +17,15 @@ jobs:
             --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
             --label tag=${GITHUB_REF##*/} \
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             --build-arg BASE_IMAGE=alpine:3.19 \
             --build-arg BUILD_IMAGE=golang:1.21-alpine3.19 \
 >>>>>>> 66e0aba (Add build image arg)
+=======
+            --build-arg BASE_IMAGE=alpine:3.19 \
+            --build-arg BUILD_IMAGE=golang:1.21-alpine3.19 \
+>>>>>>> 3a3c7af (Merge pull request #125 from hyperledger/base_image)
             --tag ghcr.io/hyperledger/firefly-fabconnect:${GITHUB_REF##*/} \
             --tag ghcr.io/hyperledger/firefly-fabconnect:head \
             .
