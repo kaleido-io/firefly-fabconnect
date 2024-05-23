@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 FROM golang:1.21-alpine3.19 AS fabconnect-builder
+=======
+ARG BASE_IMAGE
+ARG BUILD_IMAGE
+
+FROM ${BUILD_IMAGE} AS fabconnect-builder
+>>>>>>> 66e0aba (Add build image arg)
 RUN apk add make
 ADD . /fabconnect
 WORKDIR /fabconnect

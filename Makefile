@@ -26,6 +26,11 @@ firefly-fabconnect: ${GOFILES}
 	$(VGO) build -o ${BINARY_NAME} -ldflags "-X main.buildDate=`date -u +\"%Y-%m-%dT%H:%M:%SZ\"` -X main.buildVersion=$(BUILD_VERSION)" -tags=prod -tags=prod -v
 go-mod-tidy: .ALWAYS
 	go mod tidy
+<<<<<<< HEAD
+=======
+docker:
+	docker build --build-arg BASE_IMAGE=alpine:3.19  --build-arg BUILD_IMAGE=golang:1.21-alpine3.19 -t hyperledger/firefly-fabconnect .
+>>>>>>> 66e0aba (Add build image arg)
 build: firefly-fabconnect-nocgo firefly-fabconnect
 .ALWAYS: ;
 clean: 
