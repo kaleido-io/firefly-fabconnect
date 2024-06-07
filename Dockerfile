@@ -2,7 +2,7 @@ ARG BASE_IMAGE
 ARG BUILD_IMAGE
 
 FROM ${BUILD_IMAGE} AS fabconnect-builder
-RUN apk add make
+RUN apt install make
 ADD . /fabconnect
 WORKDIR /fabconnect
 RUN mkdir /.cache \
@@ -20,7 +20,12 @@ RUN trivy sbom /sbom.spdx.json --severity UNKNOWN,HIGH,CRITICAL --exit-code 1 --
 
 FROM $BASE_IMAGE
 WORKDIR /fabconnect
-COPY --from=fabconnect-builder /fabconnect/fabconnect ./
+RUN chgrp -R 0 /fabconnect/ \
+    && chmod -R g+rwX /fabconnect/
+COPY --from=fabconnect-builder --chown=1001:0  /fabconnect/fabconnect ./
 ADD ./openapi ./openapi/
 RUN ln -s /fabconnect/fabconnect /usr/bin/fabconnect
+COPY --from=SBOM /sbom.spdx.json /sbom.spdx.json
+COPY --from=SBOM /SBOM/.trivyignore /.trivyignore
+USER 1001
 ENTRYPOINT [ "fabconnect" ]
