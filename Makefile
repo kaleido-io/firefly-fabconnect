@@ -27,7 +27,7 @@ firefly-fabconnect: ${GOFILES}
 go-mod-tidy: .ALWAYS
 	go mod tidy
 docker:
-	docker build --build-arg BASE_IMAGE=alpine:3.19  --build-arg BUILD_IMAGE=golang:1.22-alpine3.19 -t hyperledger/firefly-fabconnect .
+	docker build --platform linux/amd64 --build-arg BASE_IMAGE=ubuntu:22.04  --build-arg BUILD_IMAGE=golang:1.22-bullseye -t hyperledger/firefly-fabconnect .
 build: firefly-fabconnect-nocgo firefly-fabconnect
 .ALWAYS: ;
 clean: 
