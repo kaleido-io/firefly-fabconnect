@@ -102,4 +102,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
+replace google.golang.org/grpc => google.golang.org/grpc v1.58.3
